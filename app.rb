@@ -5,15 +5,15 @@ get("/") do
   erb(:homepage)
 end
 
-get("/dice/:zebra/:alice") do
-  @num_dice = params.fetch("zebra").to_i
+get("/dice/:num_dice/:sides") do
+  @num_dice = params.fetch("num_dice").to_i
 
-  @sides = params.fetch("alice").to_i
+  @sides = params.fetch("sides").to_i
 
   @rolls = []
 
-  50.times do
-    die = rand(1..6)
+  @num_dice.times do
+    die = rand(1..@sides)
 
     @rolls.push(die)
   end
